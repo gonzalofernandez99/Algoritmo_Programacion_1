@@ -5,6 +5,8 @@ bool TengoCambio(int moneda1, int moneda2, int moneda3, int valor);
 
 void Test(int moneda1, int moneda2, int moneda3, int valor, bool resultadoEsperado);
 
+bool TengoCambioDinamico(int moneda1, int moneda2, int moneda3, int valor);
+
 void PruebaParcial() {
     Test(3, 4, 8, 7, true);
     Test(3, 4, 8, 10, true);
@@ -37,6 +39,13 @@ int main()
     {
         punteroEspacioComplejo[i]=&espacioComplejo[i];
     }
+    
+    std::cout << TengoCambio(3, 4, 8, 7) << std::endl;
+    std::cout << TengoCambio(3, 4, 8, 2) << std::endl;
+    std::cout << TengoCambio(3, 4, 8, 19) << std::endl;
+    std::cout << TengoCambio(3, 4, 8, 10) << std::endl;
+    std::cout << TengoCambio(3, 4, 8, 5) << std::endl;
+    return 0;
 }
 
 bool TengoCambio(int moneda1, int moneda2, int moneda3, int valor) {
@@ -54,4 +63,25 @@ void Test(int moneda1, int moneda2, int moneda3, int valor, bool resultadoEspera
     else {
         cout << "Test Mal" << endl;
     }
+}
+
+bool TengoCambioDinamico(int moneda1, int moneda2, int moneda3, int valor) {
+    // Crea un arreglo dinámico de booleanos
+    bool *dp = new bool[valor + 1]();
+
+    dp[0] = true; // siempre puedes obtener un valor de 0, sin usar ninguna moneda
+
+    // Por cada moneda, actualiza el arreglo dp
+    for (int i = 1; i <= valor; i++) {
+        if (i - moneda1 >= 0) dp[i] = dp[i] || dp[i - moneda1];
+        if (i - moneda2 >= 0) dp[i] = dp[i] || dp[i - moneda2];
+        if (i - moneda3 >= 0) dp[i] = dp[i] || dp[i - moneda3];
+    }
+
+    // Guarda el resultado y luego libera la memoria
+    bool resultado = dp[valor];
+    delete[] dp;
+
+    // Retorna si puedes obtener el valor objetivo
+    return resultado;
 }
