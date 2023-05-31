@@ -41,3 +41,11 @@ void moverTorres(int n, char origen, char destino, char auxiliar) {
     // Mover los n-1 discos de la torre auxiliar a la torre destino, usando la torre origen.
     moverTorres(n - 1, auxiliar, destino, origen);
 }
+
+
+int main() {
+    // Ejemplo con 4 discos.
+    moverTorres(4, 'A', 'C', 'B');
+    
+    return 0;
+}
