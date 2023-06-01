@@ -72,5 +72,5 @@ void testContarMultiplos(){
     assert(ContarMultiplos(numeros2, 73, 0, 6) == 7); 
     assert(ContarMultiplos(numeros2, 2, 0, 6) == 3); 
     assert(ContarMultiplos(numeros2, 1, 0, 6) == 7); 
-    
+
 }
