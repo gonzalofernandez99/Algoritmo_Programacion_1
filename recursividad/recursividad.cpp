@@ -123,7 +123,7 @@ void testcorteVarilla(){
 }
 
 bool subconjuntosuma(int conjunto[],int n,int suma){
-    if (suma = 0)
+    if (suma == 0)
     {
         return true;
     }
