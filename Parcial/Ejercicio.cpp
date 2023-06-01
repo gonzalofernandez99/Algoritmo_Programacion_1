@@ -38,6 +38,8 @@ int main()
     for (int i = 0; i < 10; ++i)
     {
         punteroEspacioComplejo[i]=&espacioComplejo[i];
+        cout<<punteroEspacioComplejo[i]->parteReal<<endl;
+        cout<<punteroEspacioComplejo[i]->parteImaginaria<<endl;
     }
     
     std::cout << TengoCambio(3, 4, 8, 7) << std::endl;
