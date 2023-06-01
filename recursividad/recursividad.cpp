@@ -146,6 +146,11 @@ void testconjuntosuma(){
     int suma = 8;
     std::cout << "true es 1, false es 0 " << subconjuntosuma(conjunto, n, suma) << std::endl;
 }
+
+int formasSubirEscalera(int n, int pasos[], int m){
+    
+}
+
 int main() {
     //testminmonedas();
     //moverTorres(4, 'A', 'C', 'B');
