@@ -121,10 +121,36 @@ void testcorteVarilla(){
     int L = 8;
     std::cout << "Máximo valor obtenible es " << corteVarilla(L, precios, n) << std::endl;
 }
+
+bool subconjuntosuma(int conjunto[],int n,int suma){
+    if (suma = 0)
+    {
+        return true;
+    }
+    if (n == 0)
+    {
+        return false;
+    }
+    if (conjunto[n-1]>suma)
+    {
+        return subconjuntosuma(conjunto,n-1,suma);
+    }
+    
+    return subconjuntosuma(conjunto,n-1,suma) || subconjuntosuma(conjunto,n-1,suma-conjunto[n-1]);
+    
+}
+
+void testconjuntosuma(){
+    int conjunto[] = {1, 2, 3, 4, 5, 6, 7, 1};
+    int n = sizeof(conjunto) / sizeof(conjunto[0]);
+    int suma = 8;
+    std::cout << "true es 1, false es 0 " << subconjuntosuma(conjunto, n, suma) << std::endl;
+}
 int main() {
     //testminmonedas();
     //moverTorres(4, 'A', 'C', 'B');
-    testcorteVarilla();
+    //testcorteVarilla();
+    testconjuntosuma();
     return 0;
 }
 
