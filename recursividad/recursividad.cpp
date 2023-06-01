@@ -42,10 +42,65 @@ void moverTorres(int n, char origen, char destino, char auxiliar) {
     moverTorres(n - 1, auxiliar, destino, origen);
 }
 
+bool cambioMoneda(int moneda1,int moneda2,int moneda3,int valor){
+    if (valor == 0){
+        return true;
+    }
+    if(valor<0){
+        return false;
+    }
+    return cambioMoneda(moneda1,moneda2,moneda3,valor-moneda1)|| 
+    cambioMoneda(moneda1,moneda2,moneda3,valor-moneda2)|| 
+    cambioMoneda(moneda1,moneda2,moneda3,valor-moneda3);
+}
+
+int min(int a, int b) {
+    if (a <= b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+int minMonedas(int monedas[], int n, int valor) {
+    if (valor == 0) {
+        return 0;
+    }
+    if (valor < 0) {
+        return INT_MAX;
+    }
+
+    int res = INT_MAX;
+    for (int i = 0; i < n; ++i) {
+        if (monedas[i] <= valor) {
+            int subRes = minMonedas(monedas, n, valor - monedas[i]);
+            if (subRes != INT_MAX) {
+                res = min(res, subRes + 1);
+            }
+        }
+    }
+
+    return res;
+}
+
+void testminmonedas(){
+    int monedas[] = {4, 2, 8};
+    int n = sizeof(monedas)/sizeof(monedas[0]);
+    cout<<"sizeof(monedas) "<<sizeof(monedas)<<" sizeof(monedas[0]) "<<sizeof(monedas[0])<<" sizeof(monedas)/sizeof(monedas[0])"<<n<<endl;
+    int valor = 11;
+    int res = minMonedas(monedas, n, valor);
+    if (res != INT_MAX) {
+        std::cout << "El mínimo número de monedas es " << res << std::endl;
+    } else {
+        std::cout << "No se puede obtener el valor con las monedas dadas." << std::endl;
+    }
+}
 
 int main() {
-    // Ejemplo con 4 discos.
-    moverTorres(4, 'A', 'C', 'B');
+    testminmonedas();
+    //moverTorres(4, 'A', 'C', 'B');
     
     return 0;
 }
+
+
