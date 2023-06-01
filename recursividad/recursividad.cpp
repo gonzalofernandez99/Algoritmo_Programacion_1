@@ -96,10 +96,35 @@ void testminmonedas(){
     }
 }
 
+int corteVarilla(int L, int precios[], int n) {
+    if (L <= 0) {
+        return 0;
+    }
+
+    int max_valor = -1;
+    for (int i = 0; i < n; i++) {
+        if (L >= i + 1) {
+            max_valor = max(max_valor, precios[i] + corteVarilla(L - i - 1, precios, n));
+        }
+    }
+
+    return max_valor;
+}
+
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+void testcorteVarilla(){
+    int precios[] = {1, 2, 3, 4, 5, 6, 7, 1};
+    int n = sizeof(precios) / sizeof(precios[0]);
+    int L = 8;
+    std::cout << "Máximo valor obtenible es " << corteVarilla(L, precios, n) << std::endl;
+}
 int main() {
-    testminmonedas();
+    //testminmonedas();
     //moverTorres(4, 'A', 'C', 'B');
-    
+    testcorteVarilla();
     return 0;
 }
 
