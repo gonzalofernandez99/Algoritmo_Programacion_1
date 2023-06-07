@@ -101,13 +101,12 @@ void Invertir(Lista* lista) {
         if(nodoSiguiente != nullptr) {
             cout << "nodoSiguiente: " << nodoSiguiente->item << "\n";
         }
-        // Almacena el nodo siguiente
+        
         nodoSiguiente = nodoActual->siguiente;
         
-        // Cambia el puntero siguiente del nodo actual para que apunte al nodo previo
+       
         nodoActual->siguiente = nodoPrevio;
         
-        // Mueve los punteros uno hacia adelante
         nodoPrevio = nodoActual;
         nodoActual = nodoSiguiente;
         cout << "--- Fin de la iteración ---" << "\n";
