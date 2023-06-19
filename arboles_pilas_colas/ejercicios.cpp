@@ -65,6 +65,8 @@ int dequeue(Stack** top1, Stack** top2) {
     return x;
 }
 
+
+
 int main() {
     Stack *top1 = nullptr, *top2 = nullptr;
     enqueue(&top1, 1);
